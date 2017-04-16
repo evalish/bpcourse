@@ -8,10 +8,11 @@
 		<!-- The above 3 meta tags *must* come first in the head; any other head contect must come *after* these tags -->
 		<title>Ristorante Con Fusion</title>
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
 		<link href="css/mystyles.css" rel="stylesheet">
+
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -58,9 +59,12 @@
 										aria-hidden="true"></span> Contact</a></li>
 									</ul>
 									<ul class="nav navbar-nav navbar-right">
-										<li><a data-toggle="modal" data-target="#loginModal">
-											<span class="glyphicon glyphicon-log-in"></span> Login</a>
-										</li>
+										<li>
+                        <a id="login" role="button" onclick="showModal('#loginModal');">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>
+                    </li>
+
 									</ul>
 								</div>
 							</div>
@@ -180,8 +184,8 @@
 									</div>
 									<div class="col-xs-12 col-sm-2">
 										<p style="padding:40px;"></p>
-										<a data-toggle="modal" data-target="#reserveModal" type="button" class="btn btn-warning btn-block"
-										href="#">Reserve Table</a>
+										<a id="reserveButton" type="button" class="btn btn-warning btn-block"
+										href="#" onclick="showModal('#reserveModal')" >Reserve Table</a>
 									</div>
 									
 								</div>
@@ -375,9 +379,9 @@
 							</div>
 						</footer>
 						<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+						 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 						<!-- Include all compiled plugins (below), or include individual files as needed -->
-						<script src="js/bootstrap.min.js"></script>
+						<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 						<script>
 						 $(document).ready(function(){
 						 $('[data-toggle="tooltip"]').tooltip();
@@ -394,5 +398,20 @@
 						    });
 						  });
 						</script>
+						<script>
+        /*Summary: Pass in a modal id in the form of '#myModal' to show the bootstrap modal.*/
+        function showModal(modalId) {
+            try {
+                if (modalId) {
+                    $(modalId).modal('show');
+                } else {
+                    console.log("showModal: The model id is invalid.");
+                }
+            } catch (e) {
+                console.log("showModal: An exception has occurred: " + e.message);
+            }
+        }
+    </script>
+
 					</body>
 				</html>
